@@ -24,7 +24,7 @@ const Hero = () => {
       <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-6 py-16 text-center text-white">
         {/* Eyebrow */}
         <span className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-secondary opacity-90">
-          Gas Ducted heating specialists
+          Gas Heater Specialists
         </span>
 
         {/* H1 */}
