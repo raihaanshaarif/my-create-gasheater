@@ -2,16 +2,29 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-  --secondary: #25a9e0;
+  --foreground: #0f172a; /* Use slate-900 for better readability than pure black */
+
+  /* The Trust Color: Used for Nav, Headings, and Professionalism */
   --primary: #191e4e;
+
+  /* The Cooling Color: Used for icons, secondary buttons, and 'Air' elements */
+  --secondary: #25a9e0;
+
+  /* The Heat/Emergency Color: STRICTLY for CTAs, Phone Numbers, and 'Urgent' alerts */
+  --accent: #f97316; /* A high-energy Orange */
+
+  /* Surface Colors */
+  --surface-light: #f8fafc;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-secondary: #25a9e0;
-  --color-primary: #191e4e;
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-surface-light: var(--surface-light);
+
   --font-sans: var(--font-font-saira-sans);
   --font-mono: var(--font-geist-mono);
 }

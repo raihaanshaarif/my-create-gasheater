@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import { Saira, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import Nav from "@/Component/Common/Nav";
+import Footer from "@/Component/Common/Footer";
 
 const sairaSans = Saira({
   variable: "--font-saira-sans",
@@ -32,7 +29,11 @@ export default function RootLayout({
       lang="en"
       className={`${sairaSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Nav />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

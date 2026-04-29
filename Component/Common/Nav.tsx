@@ -1,13 +1,16 @@
 "use client";
 import React, { useState, useRef } from "react";
-import logo from "@/public/assets/images/home/f-logo.png";
 import Image from "next/image";
+import Link from "next/link";
+import { motion, AnimatePresence } from "motion/react";
 import { LuPhoneCall, LuArrowDown } from "react-icons/lu";
+import { HiMenu, HiX } from "react-icons/hi";
+import logo from "@/public/assets/images/home/f-logo.png";
 
 const Nav = () => {
-  // mobile menu open state
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [mobileOpenIndex, setMobileOpenIndex] = useState<number | null>(null);
   const hoverTimeout = useRef<number | null>(null);
 
   const handleMouseEnter = (index: number) => {
@@ -22,152 +25,274 @@ const Nav = () => {
     hoverTimeout.current = window.setTimeout(() => {
       setActiveIndex(null);
       hoverTimeout.current = null;
-    }, 120);
+    }, 150);
   };
 
-  // Each item may have a submenu array.
-  // Only items with submenu will show the arrow icon.
+  const toggleMobileSubmenu = (index: number) => {
+    setMobileOpenIndex(mobileOpenIndex === index ? null : index);
+  };
+
   const navItems = [
     {
       label: "Heating",
+      href: "/services",
       submenu: [
-        "Gas Ducted Heating Repair",
-        "Gas Ducted Heating Service",
-        "Ducted Heating Installation",
-        "Hydronic Heating",
-        "Gas Heater Repair & Service",
-        "Gas Heater Replacement",
-        "Carbon Monoxide (CO) Testing",
-        "Gas Leak Detection",
+        {
+          name: "Gas Ducted Heating Repair",
+          path: "/services/gas-ducted-heating-repair",
+        },
+        {
+          name: "Gas Ducted Heating Service",
+          path: "/services/gas-ducted-heating-service",
+        },
+        {
+          name: "Ducted Heating Installation",
+          path: "/services/ducted-heating-installation",
+        },
+        {
+          name: "Gas Heater Repair & Service",
+          path: "/services/gas-heater-repair",
+        },
+        {
+          name: "Gas Heater Replacement",
+          path: "/services/gas-heater-replacement",
+        },
+        {
+          name: "Carbon Monoxide (CO) Testing",
+          path: "/services/carbon-monoxide-testing",
+        },
+        { name: "Gas Leak Detection", path: "/services/gas-leak-detection" },
       ],
     },
     {
       label: "Hot Water",
+      href: "/hot-water",
       submenu: [
-        "Hot Water Repairs & Service",
-        "Hot Water Installation",
-        "Heat Pump Installation",
-        "Water Leak Detection",
+        {
+          name: "Hot Water Repairs & Service",
+          path: "/services/hot-water-repair",
+        },
+        {
+          name: "Hot Water Installation",
+          path: "/services/hot-water-installation",
+        },
+        {
+          name: "Heat Pump Installation",
+          path: "/services/heat-pump-installation",
+        },
+        {
+          name: "Water Leak Detection",
+          path: "/services/water-leak-detection",
+        },
       ],
     },
     {
       label: "Commercial",
+      href: "/commercial",
       submenu: [
-        "Commercial Heating Repair Melbourne",
-        "Commercial Routine Maintenance",
+        {
+          name: "Commercial Heating Repair Melbourne",
+          path: "/services/commercial-heating-repair",
+        },
+        {
+          name: "Commercial Routine Maintenance",
+          path: "/services/commercial-maintenance",
+        },
       ],
     },
     {
       label: "Brands",
+      href: "/brands",
       submenu: [
-        "All Brands",
-        "Bonaire",
-        "Braemar",
-        "Braemar Wall Furnace",
-        "Breezair",
-        "Brivis",
-        "Cambro",
-        "Carrier",
-        "Celair",
+        { name: "All Brands", path: "/brands" },
+        { name: "Bonaire", path: "/brands/bonaire" },
+        { name: "Braemar", path: "/brands/braemar" },
+        { name: "Braemar Wall Furnace", path: "/brands/braemar-wall-furnace" },
+        { name: "Breezair", path: "/brands/breezair" },
+        { name: "Brivis", path: "/brands/brivis" },
+        { name: "Cambro", path: "/brands/cambro" },
+        { name: "Carrier", path: "/brands/carrier" },
+        { name: "Celair", path: "/brands/celair" },
       ],
     },
   ];
 
   return (
-    <div className="max-w-full  mx-40 z-3">
-      <div className="flex justify-between max-h-32 items-center">
-        {/* logo area */}
-        <div>
-          <Image src={logo} alt="Logo" />
-        </div>
-        {/* https://melbourneheatingandcooling.com.au/ */}
-        {/* desktop navigation */}
-        <nav className="hidden lg:block">
-          <ul className="flex items-center gap-8 text-lg">
-            {navItems.map((item, index) => (
-              <li
-                key={item.label}
-                className="group relative flex items-center gap-2 hover:text-secondary"
-                onMouseEnter={() => handleMouseEnter(index)}
-                onMouseLeave={handleMouseLeave}
-              >
-                <span>{item.label}</span>
+    // FIX: Changed 'absolute' to 'sticky bg-slate-950' so it pushes the Hero down and stays on screen
+    <header className="sticky top-0 left-0 right-0 z-50 w-full bg-slate-950 border-b border-white/10 shadow-lg">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-24 items-center justify-between">
+          {" "}
+          {/* Increased h-20 to h-24 for breathing room */}
+          {/* Logo */}
+          <Link href="/" className="min-w-0 shrink-0 z-50">
+            <Image
+              src={logo}
+              alt="Melbourne HVAC Logo"
+              className="h-12 w-auto object-contain sm:h-14 lg:h-16"
+              priority
+            />
+          </Link>
+          {/* Desktop navigation */}
+          <nav className="hidden lg:block">
+            <ul className="flex items-center gap-10 text-white font-medium">
+              {navItems.map((item, index) => (
+                <li
+                  key={item.label}
+                  className="group relative flex items-center py-8 cursor-pointer"
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Link
+                    href={item.href}
+                    className="flex items-center gap-1.5 transition-colors hover:text-secondary"
+                  >
+                    <span>{item.label}</span>
+                    {item.submenu && (
+                      <LuArrowDown className="h-4 w-4 transition-transform duration-300 group-hover:-rotate-180 text-white/70 group-hover:text-secondary" />
+                    )}
+                  </Link>
 
-                {/* show arrow only when submenu exists */}
-                {item.submenu && (
-                  <>
-                    <LuArrowDown className="inline-block h-4 w-4 transition-transform duration-300 group-hover:-rotate-180" />
-
-                    {/* submenu list stays open while hovered and closes with a small delay */}
-                    <ul
-                      className={`absolute left-0 top-full mt-2 min-w-[300px] flex-col rounded-lg border border-slate-200 bg-white p-2 shadow-lg transition duration-150 ${activeIndex === index ? "flex" : "hidden"}`}
-                    >
-                      {item.submenu.map((subItem) => (
-                        <li
-                          key={subItem}
-                          className="rounded px-3 py-2 text-sm text-black hover:bg-secondary hover:text-white"
+                  {/* Smooth Desktop Dropdown */}
+                  {item.submenu && (
+                    <AnimatePresence>
+                      {activeIndex === index && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 5 }}
+                          transition={{ duration: 0.2, ease: "easeOut" }}
+                          className="absolute left-0 top-full -mt-2 w-[280px] rounded-2xl border border-slate-100 bg-white p-3 shadow-xl z-50"
                         >
-                          {subItem}
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* desktop button */}
-        <div className="hidden lg:block">
-          <a href="">
-            <button className="px-10 py-2 border border-secondary rounded-4xl text-white font-bold transition duration-300 hover:border-transparent hover:text-gray-200 hover:bg-red-600">
-              <LuPhoneCall className="inline-block mr-2" />
-              Request a Service Callout
+                          <ul className="flex flex-col gap-1">
+                            {item.submenu.map((subItem) => (
+                              <li key={subItem.name}>
+                                <Link
+                                  href={subItem.path}
+                                  className="block rounded-xl px-4 py-3 text-sm text-slate-700 transition-colors hover:bg-slate-50 hover:text-secondary font-medium"
+                                  onClick={() => setActiveIndex(null)}
+                                >
+                                  {subItem.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+          {/* Desktop CTA button */}
+          <div className="hidden lg:block shrink-0">
+            <a
+              href="tel:0405133761"
+              className="group flex items-center px-8 py-3 bg-secondary rounded-full text-white font-bold transition-all duration-300 hover:bg-white hover:text-slate-900 shadow-lg hover:shadow-xl"
+            >
+              <LuPhoneCall className="mr-2 text-xl group-hover:animate-pulse" />
+              <span>Call 0405 133 761</span>
+            </a>
+          </div>
+          {/* Mobile: Phone + Menu Toggle */}
+          <div className="flex shrink-0 items-center gap-3 lg:hidden z-50">
+            <a
+              href="tel:0405133761"
+              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-secondary text-white shadow-lg"
+              aria-label="Call Emergency Repair"
+            >
+              <LuPhoneCall className="text-xl" />
+            </a>
+            <button
+              className="flex h-12 shrink-0 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 text-white backdrop-blur-md transition-colors hover:bg-white/20"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-expanded={isMenuOpen}
+              aria-label="Toggle mobile menu"
+            >
+              <span className="text-sm font-semibold">
+                {isMenuOpen ? "Close" : "Menu"}
+              </span>
+              {isMenuOpen ? (
+                <HiX className="text-xl" />
+              ) : (
+                <HiMenu className="text-xl" />
+              )}
             </button>
-          </a>
+          </div>
         </div>
-
-        {/* mobile menu button */}
-        <button
-          className="lg:hidden px-4 py-2 border rounded-lg border-slate-200 text-sm font-semibold"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-expanded={isMenuOpen}
-          aria-label="Toggle mobile menu"
-        >
-          {isMenuOpen ? "Close" : "Menu"}
-        </button>
       </div>
 
-      {/* mobile navigation */}
-      {isMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-slate-200">
-          <ul className="flex flex-col gap-4 p-4 text-lg font-medium">
-            {navItems.map((item) => (
-              <li key={item.label} className="space-y-2">
-                <div className="cursor-pointer py-2 text-primary hover:text-secondary transition">
-                  {item.label}
-                </div>
-
-                {/* show mobile submenu items if they exist */}
-                {item.submenu && (
-                  <ul className="ml-4 flex flex-col gap-2 text-base text-slate-600">
-                    {item.submenu.map((subItem) => (
-                      <li
-                        key={subItem}
-                        className="rounded px-3 py-2 hover:bg-slate-100 hover:text-secondary"
+      {/* Mobile Navigation Drawer */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-24 left-4 right-4 lg:hidden rounded-3xl bg-white border border-slate-100 shadow-2xl overflow-hidden z-40"
+          >
+            <div className="max-h-[75vh] overflow-y-auto overscroll-contain pb-6">
+              <ul className="flex flex-col divide-y divide-slate-100 px-6 pt-2">
+                {navItems.map((item, index) => (
+                  <li key={item.label} className="py-2">
+                    {item.submenu ? (
+                      <button
+                        className="w-full flex items-center justify-between py-4 text-lg font-bold text-slate-900 focus:outline-none"
+                        onClick={() => toggleMobileSubmenu(index)}
                       >
-                        {subItem}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
+                        <span>{item.label}</span>
+                        <LuArrowDown
+                          className={`h-5 w-5 text-slate-400 transition-transform duration-300 ${
+                            mobileOpenIndex === index
+                              ? "-rotate-180 text-secondary"
+                              : ""
+                          }`}
+                        />
+                      </button>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="w-full flex items-center justify-between py-4 text-lg font-bold text-slate-900"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    )}
+
+                    {/* Smooth Mobile Accordion */}
+                    <AnimatePresence>
+                      {item.submenu && mobileOpenIndex === index && (
+                        <motion.ul
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2, ease: "easeInOut" }}
+                          className="overflow-hidden flex flex-col gap-1 pb-4"
+                        >
+                          {item.submenu.map((subItem) => (
+                            <li key={subItem.name}>
+                              <Link
+                                href={subItem.path}
+                                onClick={() => setIsMenuOpen(false)}
+                                className="block rounded-xl px-4 py-3 text-sm text-slate-600 transition-colors hover:bg-slate-50 hover:text-secondary font-medium"
+                              >
+                                {subItem.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </motion.ul>
+                      )}
+                    </AnimatePresence>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 
