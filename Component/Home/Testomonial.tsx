@@ -6,10 +6,6 @@ import { FaGoogle } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 
-// Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-
 const Testimonial = () => {
   const reviews = [
     {
@@ -51,7 +47,7 @@ const Testimonial = () => {
   ];
 
   return (
-    <section className="bg-slate-50 py-20 px-6">
+    <section className="bg-slate-50 py-20 px-6 border-b border-slate-200">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div className="max-w-2xl">
@@ -108,7 +104,7 @@ const Testimonial = () => {
                 slidesPerView: 3,
               },
             }}
-            className="w-full !pb-14" // Push dots down slightly so they don't overlap cards
+            className="w-full pb-14!" // Push dots down slightly so they don't overlap cards
           >
             {reviews.map((review, idx) => (
               <SwiperSlide key={idx} className="h-auto">
@@ -120,7 +116,7 @@ const Testimonial = () => {
                       <AiFillStar key={i} className="text-yellow-400 text-sm" />
                     ))}
                   </div>
-                  <p className="text-slate-700 italic mb-6 flex-grow">
+                  <p className="text-slate-700 italic mb-6 grow">
                     {review.text}
                   </p>
                   <div className="mt-auto border-t border-slate-100 pt-6">

@@ -34,50 +34,55 @@ const Nav = () => {
 
   const navItems = [
     {
-      label: "Heating",
+      label: "Heating Services", // Added "Services" to the parent label for broader keyword capture
       href: "/services",
       submenu: [
+        // EMERGENCY INTENT (High conversion, instant leads)
         {
-          name: "Gas Ducted Heating Repair",
+          name: "Gas Leak Detection (24/7)",
+          path: "/services/gas-leak-detection",
+        },
+        {
+          name: "Carbon Monoxide Testing",
+          path: "/services/carbon-monoxide-testing",
+        },
+
+        // REPAIR INTENT (High search volume keywords)
+        {
+          name: "Ducted Heating Repairs",
           path: "/services/gas-ducted-heating-repair",
         },
         {
-          name: "Gas Ducted Heating Service",
+          name: "Wall Furnace & Heater Repair",
+          path: "/services/gas-heater-repair",
+        }, // Broadened to capture "furnace" searches
+
+        // INSTALL & SERVICE INTENT (High ticket value)
+        {
+          name: "Annual Heater Servicing",
           path: "/services/gas-ducted-heating-service",
         },
         {
-          name: "Ducted Heating Installation",
+          name: "New Ducted Installations",
           path: "/services/ducted-heating-installation",
         },
         {
-          name: "Gas Heater Repair & Service",
-          path: "/services/gas-heater-repair",
-        },
-        {
-          name: "Gas Heater Replacement",
+          name: "Heater Replacements",
           path: "/services/gas-heater-replacement",
         },
-        {
-          name: "Carbon Monoxide (CO) Testing",
-          path: "/services/carbon-monoxide-testing",
-        },
-        { name: "Gas Leak Detection", path: "/services/gas-leak-detection" },
       ],
     },
     {
       label: "Hot Water",
       href: "/hot-water",
       submenu: [
+        { name: "Hot Water Repairs", path: "/services/hot-water-repair" },
         {
-          name: "Hot Water Repairs & Service",
-          path: "/services/hot-water-repair",
-        },
-        {
-          name: "Hot Water Installation",
+          name: "New Hot Water Systems",
           path: "/services/hot-water-installation",
-        },
+        }, // Better keyword than "System Replacements"
         {
-          name: "Heat Pump Installation",
+          name: "Heat Pump Installations",
           path: "/services/heat-pump-installation",
         },
         {
@@ -87,15 +92,15 @@ const Nav = () => {
       ],
     },
     {
-      label: "Commercial",
+      label: "Commercial HVAC", // Added "HVAC" - high volume commercial search term
       href: "/commercial",
       submenu: [
         {
-          name: "Commercial Heating Repair Melbourne",
+          name: "Commercial Heating Repair",
           path: "/services/commercial-heating-repair",
         },
         {
-          name: "Commercial Routine Maintenance",
+          name: "Routine Maintenance Contracts",
           path: "/services/commercial-maintenance",
         },
       ],
@@ -105,15 +110,27 @@ const Nav = () => {
       href: "/brands",
       submenu: [
         { name: "All Brands", path: "/brands" },
-        { name: "Bonaire", path: "/brands/bonaire" },
-        { name: "Braemar", path: "/brands/braemar" },
-        { name: "Braemar Wall Furnace", path: "/brands/braemar-wall-furnace" },
+        { name: "Bonaire Repairs", path: "/brands/bonaire" }, // Added "Repairs" to top brands for exact-match intent
+        { name: "Braemar Repairs", path: "/brands/braemar" },
+        { name: "Brivis Repairs", path: "/brands/brivis" },
         { name: "Breezair", path: "/brands/breezair" },
-        { name: "Brivis", path: "/brands/brivis" },
         { name: "Cambro", path: "/brands/cambro" },
         { name: "Carrier", path: "/brands/carrier" },
         { name: "Celair", path: "/brands/celair" },
       ],
+    },
+    {
+      label: "Resources",
+      href: "/resources",
+      submenu: [
+        { name: "Service Areas", path: "/service-areas" }, // Added "Repairs" to top brands for exact-match intent
+        { name: "Error Codes", path: "/error-codes" },
+        { name: "Blogs", path: "/blogs" },
+      ],
+    },
+    {
+      label: "Contact",
+      href: "/contact",
     },
   ];
 
@@ -135,7 +152,7 @@ const Nav = () => {
           </Link>
           {/* Desktop navigation */}
           <nav className="hidden lg:block">
-            <ul className="flex items-center gap-10 text-white font-medium">
+            <ul className="flex items-center gap-4 text-white font-medium">
               {navItems.map((item, index) => (
                 <li
                   key={item.label}

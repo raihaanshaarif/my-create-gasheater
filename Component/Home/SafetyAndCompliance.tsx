@@ -5,7 +5,7 @@ import { IoDocumentsOutline } from "react-icons/io5";
 
 const SafetyAndCompliance = () => {
   return (
-    <section className="bg-slate-100 py-20 px-6">
+    <section className="bg-slate-100 py-20 px-6 border-b border-slate-200">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: Text Content */}
@@ -50,7 +50,7 @@ const SafetyAndCompliance = () => {
             <div className="pt-4">
               <a
                 href="tel:0405133761"
-                className="inline-block bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-secondary transition-all"
+                className="inline-block bg-secondary text-white px-8 py-4 rounded-xl font-bold hover:bg-primary transition-all"
               >
                 Book a Safety Check
               </a>
@@ -81,9 +81,9 @@ const SafetyAndCompliance = () => {
               </p>
             </div>
 
-            <div className="md:col-span-2 bg-slate-900 p-8 rounded-2xl text-white flex items-center justify-between">
+            <div className="md:col-span-2 bg-secondary p-8 rounded-2xl text-white flex items-center justify-between">
               <div>
-                <p className="text-secondary font-bold uppercase text-xs tracking-widest mb-1">
+                <p className="text-primary font-bold uppercase text-xs tracking-widest mb-1">
                   Emergency Warning
                 </p>
                 <h4 className="text-lg font-bold italic">

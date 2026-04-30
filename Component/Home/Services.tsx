@@ -14,8 +14,6 @@ import {
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
 
 const Services = () => {
   const services = [
@@ -70,7 +68,7 @@ const Services = () => {
   ];
 
   return (
-    <section className="py-24 bg-slate-50 border-t border-slate-100">
+    <section className="py-24 bg-slate-50 border-b border-slate-200 ">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
@@ -129,6 +127,8 @@ const Services = () => {
                       src={service.image}
                       alt={service.title}
                       fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      loading="eager"
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                     />
                     {/* Dark gradient overlay for text readability on hover */}

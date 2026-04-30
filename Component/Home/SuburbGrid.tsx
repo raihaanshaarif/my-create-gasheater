@@ -40,7 +40,7 @@ const SuburbGrid = () => {
   ];
 
   return (
-    <section className="bg-slate-100 py-20 px-6">
+    <section className="bg-slate-100 py-20 px-6 border-b border-slate-200">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <div className="flex justify-center mb-4">
@@ -84,13 +84,13 @@ const SuburbGrid = () => {
         </div>
 
         {/* SEO Catch-all Footer */}
-        <div className="mt-12 p-6 bg-slate-900 rounded-2xl text-center">
+        <div className="mt-12 p-6 bg-secondary rounded-2xl text-center">
           <p className="text-slate-300 font-medium">
             Don&apos;t see your suburb? We cover the **entire Greater Melbourne
             area**.
             <Link
               href="tel:0405133761"
-              className="text-white underline ml-2 hover:text-secondary transition-colors"
+              className="text-white underline ml-2 hover:text-primary transition-colors"
             >
               Call us to check availability.
             </Link>

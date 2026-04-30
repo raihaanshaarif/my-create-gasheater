@@ -39,7 +39,7 @@ const Process = () => {
   ];
 
   return (
-    <section className="bg-slate-100 py-20 px-6 border-t border-slate-100">
+    <section className="bg-slate-100 py-20 px-6  border-b border-slate-200">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">

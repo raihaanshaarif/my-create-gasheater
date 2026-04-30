@@ -11,73 +11,79 @@ import {
   LuRefreshCw,
   LuShieldCheck,
   LuTriangle,
-  LuWaves,
   LuZap,
 } from "react-icons/lu";
+import SuburbGrid from "../Home/SuburbGrid";
+import Testimonial from "../Home/Testomonial";
 
 const HeatingServices = () => {
   const breadcrumbs = [
     { label: "Services", href: "/services" },
-    { label: "Heating" },
+    { label: "Heating Services" },
   ];
 
+  // Updated to match the high-conversion SEO structure perfectly
   const heatingServices = [
+    // EMERGENCY INTENT (Ranked first for immediate user visibility)
     {
-      title: "Gas Ducted Heating Repair",
+      title: "Gas Leak Detection (24/7)",
       description:
-        "Fast diagnosis and repair for all major ducted brands. We restore whole-home comfort efficiently.",
-      link: "/services/gas-ducted-repair",
-      image: "/assets/images/services/ducted-repair.jpg",
-      icon: <LuWrench />,
-    },
-    {
-      title: "Gas Ducted Heating Service",
-      description:
-        "Comprehensive annual maintenance to prevent breakdowns and ensure your system runs at peak efficiency.",
-      link: "/services/gas-ducted-service",
-      image: "/assets/images/services/servicing.jpg",
-      icon: <LuThermometerSnowflake />,
-    },
-    {
-      title: "Ducted Heating Installation",
-      description:
-        "Energy-efficient 5 & 6-star systems tailored to your home. Expert design and professional installation.",
-      link: "/services/ducted-installation",
-      image: "/assets/images/services/installation.jpg",
-      icon: <LuFlame />,
-    },
-
-    {
-      title: "Gas Heater Repair & Service",
-      description:
-        "Repairing wall furnaces, space heaters, and gas fires. Safety checks and performance optimization for all units.",
-      link: "/services/gas-heater-repair",
-      image: "/assets/images/services/ducted-repair.jpg",
-      icon: <LuZap />,
-    },
-    {
-      title: "Gas Heater Replacement",
-      description:
-        "Old heater unsafe or inefficient? We provide seamless replacements with modern, cost-saving alternatives.",
-      link: "/services/gas-heater-replacement",
-      image: "/assets/images/services/ducted-repair.jpg",
-      icon: <LuRefreshCw />,
+        "Emergency response for gas smells or pressure drops. We find and fix leaks instantly to secure your property.",
+      link: "/services/gas-leak-detection",
+      image: "/assets/images/services/gas-leak.jpg",
+      icon: <LuTriangle />,
     },
     {
       title: "Carbon Monoxide Testing",
       description:
-        "The 'Silent Killer' is undetectable without professional gear. We provide medical-grade CO testing for your safety.",
+        "The 'Silent Killer' is undetectable without professional gear. We provide medical-grade CO testing for your family's safety.",
       link: "/services/carbon-monoxide-testing",
       image: "/assets/images/services/co-testing.jpg",
       icon: <LuShieldCheck />,
     },
+
+    // REPAIR INTENT
     {
-      title: "Gas Leak Detection",
+      title: "Ducted Heating Repairs",
       description:
-        "24/7 Emergency response for gas smells or pressure drops. We find and fix leaks to secure your property.",
-      link: "/services/gas-leak-detection",
-      image: "/assets/images/services/gas-leak.jpg",
-      icon: <LuTriangle />,
+        "Fast diagnosis and repair for all major ducted brands. We restore whole-home comfort efficiently and affordably.",
+      link: "/services/gas-ducted-heating-repair",
+      image: "/assets/images/services/ducted-repair.jpg",
+      icon: <LuWrench />,
+    },
+    {
+      title: "Wall Furnace & Heater Repair",
+      description:
+        "Repairing wall furnaces, space heaters, and gas fires. Comprehensive safety checks and performance optimization.",
+      link: "/services/gas-heater-repair",
+      image: "/assets/images/services/ducted-repair.jpg", // Update image name if you have a specific one
+      icon: <LuZap />,
+    },
+
+    // INSTALL & SERVICE INTENT
+    {
+      title: "Annual Heater Servicing",
+      description:
+        "Comprehensive routine maintenance to prevent sudden breakdowns and ensure your system runs at peak efficiency.",
+      link: "/services/gas-ducted-heating-service",
+      image: "/assets/images/services/servicing.jpg",
+      icon: <LuThermometerSnowflake />,
+    },
+    {
+      title: "New Ducted Installations",
+      description:
+        "Energy-efficient 5 & 6-star systems tailored to your home layout. Expert design and professional installation.",
+      link: "/services/ducted-heating-installation",
+      image: "/assets/images/services/installation.jpg",
+      icon: <LuFlame />,
+    },
+    {
+      title: "Heater Replacements",
+      description:
+        "Is your old heater unsafe or inefficient? We provide seamless upgrades with modern, cost-saving alternatives.",
+      link: "/services/gas-heater-replacement",
+      image: "/assets/images/services/ducted-repair.jpg", // Update image name if you have a specific one
+      icon: <LuRefreshCw />,
     },
   ];
 
@@ -110,7 +116,7 @@ const HeatingServices = () => {
           </div>
 
           {/* Fixed Grid Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-20">
             {heatingServices.map((service, index) => (
               <Link
                 key={index}
@@ -123,6 +129,7 @@ const HeatingServices = () => {
                     src={service.image}
                     alt={service.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -157,7 +164,7 @@ const HeatingServices = () => {
           </div>
 
           {/* Trust Banner / CTA */}
-          <div className="mt-24 bg-slate-900 rounded-[3rem] p-12 md:p-20 relative overflow-hidden text-center md:text-left">
+          {/* <div className="mt-24 bg-slate-900 rounded-[3rem] p-12 md:p-20 relative overflow-hidden text-center md:text-left">
             <div className="absolute top-0 right-0 w-1/2 h-full bg-secondary/10 -skew-x-12 translate-x-20 pointer-events-none" />
 
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
@@ -185,7 +192,10 @@ const HeatingServices = () => {
                 </span>
               </a>
             </div>
-          </div>
+          </div> */}
+
+          <SuburbGrid />
+          <Testimonial />
         </div>
       </section>
     </main>

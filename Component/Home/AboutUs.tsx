@@ -8,7 +8,7 @@ import { LuCircleCheck, LuUsers, LuMapPin, LuPhoneCall } from "react-icons/lu";
 
 export const AboutUs = () => {
   return (
-    <section className="relative py-24 bg-white overflow-hidden">
+    <section className="relative py-24 bg-white overflow-hidden border-b border-slate-200">
       {/* Decorative Background Accent */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50/50 -skew-x-12 translate-x-20 z-0" />
 

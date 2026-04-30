@@ -16,10 +16,10 @@ interface PageHeaderProps {
 
 const PageHeader = ({ title, subtitle, breadcrumbs }: PageHeaderProps) => {
   return (
-    <section className="relative bg-primary pt-12 pb-10 overflow-hidden py-16 ">
+    <section className="relative bg-slate-50  pt-12 pb-10 overflow-hidden py-16 ">
       {/* Background Decorative Layer */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-linear-to-r from-primary to-primary/70" />
+        <div className="absolute inset-0 bg-linear-to-r from-secondary to-secondary/70" />
         <div
           className="absolute inset-0 opacity-[0.05] pointer-events-none"
           style={{
@@ -35,7 +35,7 @@ const PageHeader = ({ title, subtitle, breadcrumbs }: PageHeaderProps) => {
           <nav className="flex items-center gap-2 text-white/70 text-sm mb-8 font-medium">
             <Link
               href="/"
-              className="hover:text-secondary transition-colors flex items-center gap-1"
+              className="hover:text-primary transition-colors flex items-center gap-1"
             >
               <HiHome className="text-lg" />
               <span>Home</span>
@@ -47,7 +47,7 @@ const PageHeader = ({ title, subtitle, breadcrumbs }: PageHeaderProps) => {
                 {crumb.href ? (
                   <Link
                     href={crumb.href}
-                    className="hover:text-secondary transition-colors"
+                    className="hover:text-primary transition-colors"
                   >
                     {crumb.label}
                   </Link>
